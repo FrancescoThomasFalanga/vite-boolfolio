@@ -3,7 +3,7 @@
 export default {
     data() {
         return {
-
+            baseUrl: "http://127.0.0.1:8000/",
         }
     },
 
@@ -14,6 +14,14 @@ export default {
     methods: {
 
     },
+
+    computed: {
+
+        getImgSrc() {
+            return this.baseUrl + "storage/" + this.projects.url_img;
+        }
+
+    }
 }
 
 </script>
