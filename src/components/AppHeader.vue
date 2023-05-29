@@ -4,6 +4,10 @@ export default {
     data() {
         return {
 
+            links: ["Home", "About", "Projects", "Contact"],
+
+            isHome: 0,
+
         }
     },
 }
@@ -27,24 +31,9 @@ export default {
 
                 <ul>
 
-                    <li>
-                        <a class="" href="">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a class="" href="">
-                            Projects
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Contact
+                    <li v-for="(link, index) in links">
+                        <a @click="this.isHome = index" :class="index == this.isHome ? 'active' : '' " href="#">
+                            {{ link }}
                         </a>
                     </li>
 
@@ -118,6 +107,10 @@ export default {
 
     }
 
+}
+
+.active {
+    border-bottom: 3px solid rgb(29, 29, 29);
 }
 
 </style>
