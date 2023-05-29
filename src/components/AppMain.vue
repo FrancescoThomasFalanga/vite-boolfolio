@@ -34,11 +34,29 @@ export default {
 
 <template>
 
+<main>
 
+    <section>
+
+        <ProjectCard v-for="project in projects" :project="project"></ProjectCard>
+
+    </section>
+
+</main>
 
 </template>
 
 
 <style lang="scss" scoped>
     
+    section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 70px;
+        margin: 100px auto;
+        max-width: 1000px;
+    }
+
 </style>

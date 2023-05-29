@@ -22,7 +22,7 @@ export default {
 
 
 <template>
-  <div>
+  <div class="fluid-container">
 
     <AppHeader></AppHeader>
 
@@ -34,8 +34,11 @@ export default {
 </template>
 
 
-<style scoped>
+<style lang="scss" scoped>
 
-
+  div.fluid-container {
+    display: flex;
+    flex-direction: column;
+  }
 
 </style>

@@ -12,12 +12,112 @@ export default {
 
 
 <template>
+    <nav id="nav-custom" class="fixed-top mb-5">
+
+            <div class="logo">
+
+                <a href="">
+                    <img src="/img/ciccio.gif" alt="LOGO">
+                </a>
+
+            </div>
 
 
+            <div class="links">
 
+                <ul>
+
+                    <li>
+                        <a class="" href="">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a class="" href="">
+                            Projects
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+    </nav>
 </template>
 
 
 <style lang="scss" scoped>
     
+    nav#nav-custom {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // padding: 10px;
+
+    background-color: #0fe855;
+
+    .logo {
+
+        a {
+
+            img {
+
+                width: 80px;
+                object-fit: cover;
+                padding: 10px;
+
+            }
+
+        }
+
+    }
+
+
+
+    .links {
+
+        ul {
+
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+
+            li {
+
+                a {
+                    text-decoration: none;
+                    color: #1d2027;
+                    font-weight: bold;
+                    font-size: 18px;
+
+                    padding: 18px;
+
+                    &:hover {
+                        border-bottom: 3px solid rgb(29, 29, 29);
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
 </style>
