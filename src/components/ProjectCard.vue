@@ -48,17 +48,17 @@ export default {
                 <h2>{{project.title}}</h2> 
 
                 
-                <h5>Type: <span class="text-decoration-underline">{{project.type ? project.type.name : 'nessuna'}}</span></h5>
+                <h5 class="type">Type: <span class="text-decoration-underline">{{project.type ? project.type.name : 'nessuna'}}</span></h5>
                 
-                <h6>Technologies: 
+                <h6 class="technology">Technologies: 
                     
                     <span v-for="technology in project.technologies" class="badge rounded-pill mx-1 my-1" :style="{backgroundColor: technology.color}">{{technology.name}}</span>
                     
                 </h6>
                 
-                <strong>GitHub Link: </strong><a href="">{{project.repo}}</a>
+                <strong class="repo">GitHub Link: </strong><a class="repo" href="">{{project.repo}}</a>
                 
-                <p>{{project.description}}</p>
+                <p class="desc">{{project.description}}</p>
                 
                 <button class="button">
                     <a href="">View Project</a>
@@ -117,6 +117,64 @@ export default {
             }
 
         }
+    }
+
+
+
+    @media only screen and (max-width: 576px) {
+
+        .project {
+
+            max-width: 300px;
+            .left {
+
+                a {
+
+                    img {
+
+                        max-width: 200px;
+                        height: 100%;
+                    }
+
+                }
+
+            }
+
+            .right {
+
+
+                padding-bottom: 20px;
+
+                h2 {
+
+                    font-size: 20px;
+                    padding-right: 6px;
+
+                }
+
+                .desc, .repo, .technology, .type {
+                    display: none;
+                }
+
+                p {
+
+
+
+                }
+
+            }
+        }
+
+    }
+
+    @media only screen and (min-width: 577px) and (max-width: 768px) {
+
+        .project {
+
+            max-width: 500px;
+
+        }
+
     }
 
 </style>

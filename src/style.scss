@@ -105,3 +105,20 @@ body {
   
 }
 // COMMON BUTTON CUSTOM
+
+
+
+@media only screen and (max-width: 576px) {
+
+  .button {
+
+    margin-bottom: 5px;
+    padding: 7px;
+
+    a {
+      padding: 7px;
+    }
+
+  }
+
+}
