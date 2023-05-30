@@ -6,9 +6,8 @@ export default {
     data() {
         return {
             projects: [],
-
-            currentPage: 1,
-            lastPage: 0,
+            pagination: [],
+            apiURL: "http://127.0.0.1:8000/api/projects",
         }
     },
 
@@ -17,42 +16,20 @@ export default {
     },
 
     created() {
-        this.getProjects();
+        this.getProjects(this.apiURL);
     },
 
     methods: {
-        getProjects() {
-            axios.get("http://127.0.0.1:8000/api/projects?page=" + this.currentPage ).then((res) => {
+        getProjects(apiURL) {
+            axios.get(apiURL).then((res) => {
 
                 console.log(res.data.results);
+                
                 this.projects = res.data.results.data;
-                this.lastPage = res.data.results.last_page;
+
+                this.pagination = res.data.results;
 
             });
-        },
-
-        nextPage() {
-
-            if(this.lastPage != this.currentPage) {
-
-                this.currentPage++;
-
-                this.getProjects();
-
-            }
-
-        },
-
-        prevPage() {
-
-            if(this.currentPage != 1) {
-
-                this.currentPage--;
-
-                this.getProjects();
-
-            }
-
         },
     },
 }
@@ -69,10 +46,9 @@ export default {
         <ProjectCard v-for="project in projects" :project="project"></ProjectCard>
 
 
-        <div class="d-flex gap-5">
+        <div class="d-flex">
 
-            <button @click="prevPage" class="btn-custom">Previous Page <span></span></button>
-            <button @click="nextPage" class="btn-custom">Next Page <span></span></button>
+            <button @click="getProjects(link.url)" v-for="link in pagination.links" class="btn-custom" v-html="link.label"></button>
 
         </div>
 
