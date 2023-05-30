@@ -6,6 +6,25 @@ export default {
 
             links: ["Home", "About", "Projects", "Contact"],
 
+            links: [
+                {
+                    name: "Home",
+                    urlPage: "home",
+                },
+                {
+                    name: "About",
+                    urlPage: "about",
+                },
+                {
+                    name: "Projects",
+                    urlPage: "projects",
+                },
+                {
+                    name: "Contact",
+                    urlPage: "contact",
+                },
+            ],
+
             isHome: 0,
 
         }
@@ -33,7 +52,9 @@ export default {
 
                     <li v-for="(link, index) in links">
                         <a @click="this.isHome = index" :class="index == this.isHome ? 'active' : '' " href="#">
-                            {{ link }}
+                            <router-link :to="{ name: link.urlPage }">
+                                {{ link.name }}
+                            </router-link>
                         </a>
                     </li>
 
