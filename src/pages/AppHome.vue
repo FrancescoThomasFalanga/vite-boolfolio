@@ -28,8 +28,10 @@ export default {
     
         <p>A Full Stack Web Developer</p>
     
-        <button>
-            <a href="{{route('projects.index')}}">MY PROJECTS<span></span></a>
+        <button class="btn-custom">
+
+            <router-link :to="{name: 'projects'}">My Projects<span></span></router-link>
+            
         </button>
     
     </div>
@@ -82,10 +84,6 @@ main {
         }
 
         button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            background-color: #0fe855;
 
             a {
 
