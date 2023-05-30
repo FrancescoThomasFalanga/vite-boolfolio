@@ -61,7 +61,7 @@ export default {
                 <p class="desc">{{project.description}}</p>
                 
                 <button class="button">
-                    <a href="">View Project</a>
+                    <router-link :to="{name: 'singleProject', params: {slug: project.slug}}">View Project</router-link>
                 </button>
 
             </div>
