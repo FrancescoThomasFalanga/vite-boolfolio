@@ -8,6 +8,8 @@ export default {
             projects: [],
             pagination: [],
             apiURL: "http://127.0.0.1:8000/api/projects",
+            
+            pageNumber: 0,
         }
     },
 
@@ -24,7 +26,7 @@ export default {
             axios.get(apiURL).then((res) => {
 
                 console.log(res.data.results);
-                
+
                 this.projects = res.data.results.data;
 
                 this.pagination = res.data.results;
@@ -48,7 +50,7 @@ export default {
 
         <div class="d-flex">
 
-            <button @click="getProjects(link.url)" v-for="link in pagination.links" class="btn-custom" v-html="link.label"></button>
+            <button @click="getProjects(link.url)" :class="link.active ? 'active' : '' "  v-for="link in pagination.links" class="btn-custom" v-html="link.label"></button>
 
         </div>
 
@@ -124,6 +126,12 @@ export default {
         50%,100% {
         left: 100%;
         }
+    }
+
+
+    .active {
+        background-color: #03f40f;
+        border-radius: 5px;
     }
 
 </style>
