@@ -112,4 +112,37 @@ main {
     }
 }
 
+
+
+
+@media only screen and (max-width: 768px) {
+
+    main {
+
+        .container {
+
+            .text-shadow {
+
+                font-size: 25px;
+
+            }
+
+            p {
+
+                font-size: 13px;
+                
+            }
+
+            button {
+
+                padding: 6px 14px;
+
+            }
+
+        }
+
+    }
+
+}
+
 </style>

@@ -63,6 +63,7 @@ footer {
             background-size: 80%;
             animation: shine 6s linear infinite;
             position: relative;
+            text-align: center;
 
             span {
 
@@ -84,6 +85,25 @@ footer {
     100% {
     background-position-x: 500%;
     }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+    footer {
+
+        .copyright {
+
+            p {
+                font-size: 12px;
+                text-align: center;
+            }
+
+        }
+
+    }
+
 }
 
 </style>
