@@ -16,29 +16,41 @@ const router = createRouter({
             path: '/',
             name: 'home',
             component: AppHome,
+            meta: {title: 'Home'},
         },
         {
             path: '/about',
             name: 'about',
             component: AppAbout,
+            meta: {title: 'About'},
         },
         {
             path: '/projects',
             name: 'projects',
             component: ProjectList,
+            meta: {title: 'Projects'},
         },
         {
             path: '/contact',
             name: 'contact',
             component: AppContact,
+            meta: {title: 'Contact'},
         },
         {
             path: '/singleProject/:slug',
             name:'singleProject',
             component: SingleProject,
+            meta: {title: 'SingleProject'},
         },
 
     ],
+
+});
+
+
+router.beforeEach((to, from) => {
+
+    document.title = to.meta?.title ?? 'Portfolio'
 
 });
 
