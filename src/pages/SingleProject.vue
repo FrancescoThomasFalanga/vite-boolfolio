@@ -11,7 +11,7 @@ export default {
 
             apiURL: "http://127.0.0.1:8000/api/projects/",
 
-            postFound: true,
+            projectFound: true,
 
         }
     },
@@ -27,11 +27,11 @@ export default {
             if(res.data.success) {
 
                 this.project = res.data.results;
-                this.postFound = true;
+                this.projectFound = true;
 
             } else {
 
-                this.postFound = false;
+                this.projectFound = false;
 
             }
             
@@ -58,7 +58,7 @@ export default {
 
 <section>         
 
-<div class="project" v-if="postFound">
+<div class="project" v-if="projectFound">
     <div class="left">
 
         <a href="">
@@ -71,7 +71,7 @@ export default {
 
         <h2>{{project.title}}</h2> 
         
-        <h5>Type: <span class="text-decoration-underline">{{project.type ?? 'nessuna'}}</span></h5>
+        <h5>Type: <span class="text-decoration-underline">{{project.type ? project.type.name : 'Nessuna'}}</span></h5>
 
         <h6>Technologies: 
 
