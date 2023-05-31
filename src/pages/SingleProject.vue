@@ -5,7 +5,7 @@ export default {
     data() {
         return {
 
-            project: null,
+            project: [],
 
             baseUrl: "http://127.0.0.1:8000/",
 
@@ -28,15 +28,15 @@ export default {
         
     },
 
-    // methods: {
-    //     getImgSrc(path) {
-    //         if(path) {
-    //             return this.baseUrl + "storage/" + path;
-    //         } else {
-    //             return "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
-    //         }
-    //     }
-    // },
+    methods: {
+        getImgSrc() {
+            if(this.project.url_img == null) {
+                return "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg";
+            } else {
+                return this.baseUrl + "storage/" + this.project.url_img;
+            }
+        }
+    },
 }
 
 </script>
@@ -51,7 +51,7 @@ export default {
     <div class="left">
 
         <a href="">
-            <!-- <img :src="project.url_img" alt="Project IMG"> -->
+            <img :src="getImgSrc()" alt="Project IMG">
         </a>
 
     </div>
