@@ -11,6 +11,8 @@ export default {
 
             apiURL: "http://127.0.0.1:8000/api/projects/",
 
+            postFound: true,
+
         }
     },
 
@@ -22,7 +24,16 @@ export default {
             
             console.log(res.data.results);
             
-            this.project = res.data.results;
+            if(res.data.success) {
+
+                this.project = res.data.results;
+                this.postFound = true;
+
+            } else {
+
+                this.postFound = false;
+
+            }
             
         });
         
@@ -47,7 +58,7 @@ export default {
 
 <section>         
 
-<div class="project">
+<div class="project" v-if="postFound">
     <div class="left">
 
         <a href="">
@@ -56,7 +67,7 @@ export default {
 
     </div>
 
-    <div class="right" v-if="project">
+    <div class="right">
 
         <h2>{{project.title}}</h2> 
         
@@ -81,6 +92,9 @@ export default {
         </div>
 
     </div>
+</div>
+<div v-else class="alert alert-danger" role="alert">
+    <h1>Project Not Found</h1>
 </div>
 
 </section>
