@@ -25,8 +25,6 @@ export default {
                 },
             ],
 
-            isHome: 0,
-
         }
     },
 
@@ -64,8 +62,8 @@ export default {
 
                 <ul>
 
-                    <li v-for="(link, index) in links">
-                        <a @click="this.isHome = index" :class="index == this.isHome ? 'active' : '' " href="#">
+                    <li v-for="link in links">
+                        <a  href="#">
                             <router-link :to="{ name: link.urlPage }">
                                 {{ link.name }}
                             </router-link>
@@ -84,8 +82,8 @@ export default {
 
                     <!-- menu & menu items -->
                     <ul class="nav-menu">
-                        <li v-for="(link, index) in links" class="nav-item">
-                            <a class="nav-link" @click="this.isHome = index" :class="index == this.isHome ? 'active' : '' " href="#">
+                        <li v-for="link in links" class="nav-item">
+                            <a class="nav-link"  href="#">
                                 <router-link :to="{ name: link.urlPage }">
                                     {{ link.name }}
                                 </router-link>
@@ -177,7 +175,7 @@ export default {
 
 }
 
-.active {
+.router-link-active {
     border-bottom: 3px solid rgb(29, 29, 29);
 }
 
