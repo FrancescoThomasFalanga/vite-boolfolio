@@ -6,10 +6,19 @@ export default {
     data() {
         return {
             projects: [],
+
             pagination: [],
-            apiURL: "http://127.0.0.1:8000/api/projects",
+
+            apiURL: "http://127.0.0.1:8000/api/projects?page=1",
             
             pageNumber: 0,
+
+            types: [],
+
+            selectedTypeId: '',
+
+            projectFound: false,
+
         }
     },
 
@@ -22,14 +31,29 @@ export default {
     },
 
     methods: {
-        getProjects(apiURL) {
-            axios.get(apiURL).then((res) => {
+        getProjects(url) {
+            
+            axios.get(url + "&type_id=" + this.selectedTypeId).then((res) => {
 
                 console.log(res.data.results);
 
-                this.projects = res.data.results.data;
+                if(res.data.success) {
 
-                this.pagination = res.data.results;
+                    this.projects = res.data.results.data;
+
+                    this.types = res.data.allTypes;
+
+                    this.pagination = res.data.results;
+
+                    this.projectFound = true;
+
+                } else {
+
+                    this.projectFound = false;
+
+                }
+                
+                // console.log(res.data);
 
             });
         },
@@ -46,7 +70,21 @@ export default {
 
 <section>
 
-    <ProjectCard v-for="project in projects" :project="project"></ProjectCard>
+    <form action="">
+        <select name="type_id" id="type_id" class="form-select" v-model="selectedTypeId" @change="getProjects(this.apiURL)">
+            <option value="">Tutte</option>
+            <option v-for="type in types" :value="type.id">{{ type.name }}</option>
+        </select>
+    </form>
+
+
+    <div v-if="projectFound">
+        <ProjectCard v-for="project in projects" :project="project" class="my-5"></ProjectCard>
+    </div>
+    <div v-else class="alert alert-warning" role="alert">
+        No Project Found
+    </div>
+
 
 
     <div class="d-flex">

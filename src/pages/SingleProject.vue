@@ -5,7 +5,7 @@ export default {
     data() {
         return {
 
-            project: [],
+            project: {},
 
             baseUrl: "http://127.0.0.1:8000/",
 
