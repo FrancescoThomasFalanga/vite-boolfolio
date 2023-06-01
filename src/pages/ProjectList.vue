@@ -82,7 +82,7 @@ export default {
         <ProjectCard v-for="project in projects" :project="project" class="my-5"></ProjectCard>
     </div>
     <div v-else class="alert alert-warning" role="alert">
-        No Project Found
+        No Project Found with this Type
     </div>
 
 
