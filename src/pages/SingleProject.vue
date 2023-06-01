@@ -29,6 +29,8 @@ export default {
                 this.project = res.data.results;
                 this.projectFound = true;
 
+                document.title = 'Project: ' + this.project.title;
+
             } else {
 
                 this.projectFound = false;
