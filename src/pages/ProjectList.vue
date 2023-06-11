@@ -106,7 +106,7 @@ export default {
     section {
         display: flex;
         justify-content: center;
-        align-items: center;
+        // align-items: center;
         flex-direction: column;
         gap: 70px;
         margin: 100px auto;
