@@ -49,7 +49,7 @@ export default {
 
                 } else {
 
-                    this.projectFound = false;
+                    this.projectFound = false; 
 
                 }
                 
@@ -68,7 +68,7 @@ export default {
 
 <main>
 
-<section>
+<section class="fluid-container">
 
     <form action="">
         <select name="type_id" id="type_id" class="form-select" v-model="selectedTypeId" @change="getProjects(this.apiURL)">
@@ -78,7 +78,7 @@ export default {
     </form>
 
 
-    <div v-if="projectFound">
+    <div v-if="projectFound" class="projects">
         <ProjectCard v-for="project in projects" :project="project" class="my-5"></ProjectCard>
     </div>
     <div v-else class="alert alert-warning" role="alert">
@@ -87,7 +87,7 @@ export default {
 
 
 
-    <div class="d-flex">
+    <div class="d-flex justify-content-center">
 
         <button @click="getProjects(link.url)" :class="link.active ? 'active' : '' "  v-for="link in pagination.links" class="btn-custom" v-html="link.label"></button>
 
@@ -105,12 +105,19 @@ export default {
     
     section {
         display: flex;
-        justify-content: center;
-        // align-items: center;
         flex-direction: column;
+        justify-content: center;
         gap: 70px;
-        margin: 100px auto;
-        max-width: 1000px;
+        margin: 100px 30px;
+    }
+
+    .projects {
+
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        flex-flow: row wrap;
+
     }
 
     .btn-custom {
