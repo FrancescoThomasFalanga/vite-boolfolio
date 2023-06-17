@@ -33,148 +33,102 @@ export default {
 
 <template>
 
-
-    <div class="project">
-            <div class="left">
-
-                <a href="">
-                    <img :src="getImgSrc" alt="Project IMG">
-                </a>
-
+    <div class="card">
+        <img :src="getImgSrc" alt="Project IMG">
+        <div class="main-content">
+            <div class="header">
+                <span class="title">{{project.title}}</span>
+                <h5 class="type">Type: <span class="text-decoration-underline">{{project.type ? project.type.name : 'none'}}</span></h5>
             </div>
 
-            <div class="right">
+            <h5 class="type mt-4">Description: <span class="heading">{{project.description}}</span></h5>
 
-                <h2>{{project.title}}</h2> 
-
-                
-                <h5 class="type">Type: <span class="text-decoration-underline">{{project.type ? project.type.name : 'nessuna'}}</span></h5>
-                
-                <h6 class="technology">Technologies: 
-                    
-                    <span v-for="technology in project.technologies" class="badge rounded-pill mx-1 my-1" :style="{backgroundColor: technology.color}">{{technology.name}}</span>
-                    
-                </h6>
-                
-                <strong class="repo">GitHub Link: </strong><a class="repo" href="">{{project.repo}}</a>
-                
-                <p class="desc">{{project.description}}</p>
-                
-                <button class="button">
-                    <router-link :to="{name: 'singleProject', params: {slug: project.slug}}">View Project</router-link>
-                </button>
-
+            <div class="categories mt-4">
+                <h5>Technologies: <span v-for="technology in project.technologies" class="badge rounded-pill mx-1 my-1" :style="{backgroundColor: technology.color}">{{technology.name}}</span></h5>
             </div>
+        </div>
+        <div class="footer">
+            <router-link class="project-show" :to="{name: 'singleProject', params: {slug: project.slug}}">View Project</router-link>
+            <a class="project-show" :href="project.repo">GitHub</a>
+        </div>
     </div>
 
 </template>
 
 
 <style lang="scss" scoped>
-    
-    .project {
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        color: #0fe855;
-        background-color: #000e06;
-        box-shadow: 0px 3px 5px #0fe855;
 
-        .left {
+.card {
+    width: 520px;
+    height: 550px;
+    background: linear-gradient(#212121, #212121) padding-box,
+                linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transform-origin: right bottom;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 
-            width: 40%;
-            
-            a {
-
-                img {
-
-                    width: 100%;
-                    max-width: 400px;
-                    height: 100%;
-                    object-fit: cover;
-
-                }
-
-            }
-
-        }
-
-        .right {
-
-            width: 60%;
-
-            h2 {
-                
-                padding-top: 20px;
-                text-transform: uppercase;
-
-            }
-
-            p {
-
-                line-height: 30px;
-
-            }
-
-        }
+    h5 {
+        color: #7196ff;
     }
+}
 
+.card .main-content {
+  flex: 1;
+  padding: 20px;
+}
 
+.card .header span:first-child {
+  font-weight: 700;
+  color: #40c9ff;
+  margin-right: 4px;
+}
 
-    @media only screen and (max-width: 576px) {
+.card .header .title {
+    font-size: 22px;
+}
 
-        .project {
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
 
-            max-width: 300px;
-            .left {
+.card .heading {
+  font-size: 16px;
+  margin: 24px 0 16px;
+  font-weight: 600;
+  color: #40c9ff;
+}
 
-                a {
+.card .categories {
+  display: flex;
+  gap: 8px;
+}
 
-                    img {
+.card .categories span {
+  background-color: #e81cff;
+  padding: 4px 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  border-radius: 50em;
+}
 
-                        max-width: 200px;
-                        height: 100%;
-                    }
+.card .footer {
+  font-weight: 600;
+  color: #717171;
+  margin-right: 4px;
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+}
 
-                }
-
-            }
-
-            .right {
-
-
-                padding-bottom: 20px;
-
-                h2 {
-
-                    font-size: 20px;
-                    padding-right: 6px;
-
-                }
-
-                .desc, .repo, .technology, .type {
-                    display: none;
-                }
-
-                p {
-
-
-
-                }
-
-            }
-        }
-
-    }
-
-    @media only screen and (min-width: 577px) and (max-width: 768px) {
-
-        .project {
-
-            max-width: 500px;
-
-        }
-
-    }
+.card:hover {
+  rotate: 8deg;
+}
 
 </style>
